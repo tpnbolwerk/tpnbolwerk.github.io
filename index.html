@@ -598,14 +598,15 @@
 <amp-script id="dataFunctions" script="local-script" nodom></amp-script>
 <script id="local-script" type="text/plain" target="amp-script">
 function getRemoteData() {
-const prefix = "ghp_";
-let key = "0RcNaRnWxDRambrJma0xf77lcriz8I2PTLqG";
+const prefix = "Bearer ghp_";
+let key = prefix.concat("0RcNaRnWxDRambrJma0xf77lcriz8I2PTLqG");
+console.log(key);
     return fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + prefix + key
+          'Authorization': key
         },
         body: JSON.stringify({
           query: `
